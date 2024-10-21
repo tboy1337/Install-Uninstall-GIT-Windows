@@ -60,7 +60,6 @@ for /L %%i in (0,1,4) do (
             rd /s /q "!locations[%%i]!" 2>nul
             if !errorlevel! neq 0 (
                 echo Warning: Could not remove remaining files in !locations[%%i]!
-                echo This might require manual cleanup.
                 set "cleanup_error=1"
             ) else (
                 echo Successfully removed remaining files in !locations[%%i]!
