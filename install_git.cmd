@@ -69,7 +69,7 @@ if %errorlevel% neq 0 (
     echo All download methods failed.
     start /wait schtasks /delete /tn "RunAsSystemTask" /f >nul
     if %errorlevel% neq 0 (
-        echo Failed to delete scheduled task, please delete it manually.
+        echo Failed to delete scheduled task, please delete "RunAsSystemTask" manually.
     )
     goto :giterror
 )
@@ -84,7 +84,7 @@ timeout /t 2 /nobreak >nul
 
 start /wait schtasks /delete /tn "RunAsSystemTask" /f >nul
 if %errorlevel% neq 0 (
-    echo Failed to delete scheduled task, please delete it manually.
+    echo Failed to delete scheduled task, please delete "RunAsSystemTask" manually.
 )
 
 :verify_download
