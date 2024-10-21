@@ -63,9 +63,14 @@ if %errorlevel% neq 0 (
     goto :giterror
 )
 
+
 start /wait schtasks /run /tn "RunAsSystemTask" >nul
 if %errorlevel% neq 0 (
     echo All download methods failed.
+    start /wait schtasks /delete /tn "RunAsSystemTask" /f >nul
+    if %errorlevel% neq 0 (
+            echo Failed to delete scheduled task, please delete it manually.
+    )
     goto :giterror
 )
 
