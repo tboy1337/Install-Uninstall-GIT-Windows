@@ -38,7 +38,7 @@ for /L %%i in (0,1,4) do (
     if exist "!locations[%%i]!\unins000.exe" (
         echo Found Git installation in !locations[%%i]!
         
-        echo Checking for running Git processes...
+        echo Terminating running Git processes...
         taskkill /F /IM "bash.exe" 2>nul
         taskkill /F /IM "putty.exe" 2>nul
         taskkill /F /IM "puttytel.exe" 2>nul
