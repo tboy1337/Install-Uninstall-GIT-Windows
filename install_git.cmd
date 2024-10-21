@@ -88,7 +88,7 @@ if %errorlevel% neq 0 (
 )
 
 :verify_download
-if not exist "%INSTALLER_NAME%" (
+if not exist "%TEMP_DIR%\%INSTALLER_NAME%" (
     echo Download appears to have failed - installer not found.
     goto :giterror
 )
