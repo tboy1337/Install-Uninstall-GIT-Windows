@@ -29,7 +29,7 @@ for /L %%i in (0,1,4) do (
 if %found_installations% equ 0 (
     echo No Git installations found in standard locations.
     echo This might be because Git is installed in a non-standard location.
-    echo If you think Git is still installed try to uninstall it through Control Panel or locate the installation folder and run unins000.exe.
+    echo If you think Git is still installed try to uninstall it through Control Panel or locate the installation folder and run "unins000.exe".
     timeout /t 5 /nobreak
     exit /b 7
 )
