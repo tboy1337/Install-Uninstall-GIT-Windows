@@ -54,7 +54,6 @@ echo bitsadmin /transfer %DOWNLOAD_TASK% /download /priority FOREGROUND /DYNAMIC
 
 if %errorlevel% neq 0 (
     echo Failed to write to temporary directory.
-    echo All download methods failed.
     goto :giterror
 )
 
