@@ -148,7 +148,7 @@ if %errorlevel% neq 0 (
 )
 rd /s /q "%TEMP_DIR%"
 if %errorlevel% neq 0 (
-    echo Failed to remove temporary Git install directory. Please delete %TEMP_DIR% manually.
+    echo Failed to remove temporary Git install directory. Please delete "%TEMP_DIR%" manually.
 ) else (
     echo Clean up successful.
 )
