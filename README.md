@@ -6,7 +6,7 @@
   - Downloads Git directly from the official Git for Windows repository
   - Configures Git with sensible defaults using an INI configuration file
   - Performs silent installation with no user interaction required
-  - Easy version updating
+  - Easy version updating via environmental variable
 
 - **Thorough Git Uninstallation**
   - Detects Git installations in multiple standard locations
