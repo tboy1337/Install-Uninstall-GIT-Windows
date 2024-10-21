@@ -16,7 +16,7 @@
 
 ## Requirements
 
-- Windows operating system
+- 64-bit Windows operating system (64-bit for installation only)
 - Administrative privileges
 - Internet connection (for installation only)
 
