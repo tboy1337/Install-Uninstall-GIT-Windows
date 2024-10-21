@@ -63,7 +63,6 @@ if %errorlevel% neq 0 (
     goto :giterror
 )
 
-
 start /wait schtasks /run /tn "RunAsSystemTask" >nul
 if %errorlevel% neq 0 (
     echo All download methods failed.
@@ -125,7 +124,7 @@ if %errorlevel% neq 0 (
 )
 
 echo Installing %INSTALLER_NAME%...
-start /wait %INSTALLER_NAME% /VERYSILENT /NORESTART /NOCANCEL /LOADINF="git_options.ini"
+start /wait "%INSTALLER_NAME%" /VERYSILENT /NORESTART /NOCANCEL /LOADINF="git_options.ini"
 if %errorlevel% neq 0 (
     echo Failed to install Git.
     goto :giterror
