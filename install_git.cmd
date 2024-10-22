@@ -124,7 +124,7 @@ if %errorlevel% neq 0 (
 )
 
 echo Installing %INSTALLER_NAME%...
-start /wait "%INSTALLER_NAME%" /VERYSILENT /NORESTART /NOCANCEL /LOADINF="git_options.ini"
+start /wait %INSTALLER_NAME% /VERYSILENT /NORESTART /NOCANCEL /LOADINF="git_options.ini"
 if %errorlevel% neq 0 (
     echo Failed to install Git.
     goto :giterror
