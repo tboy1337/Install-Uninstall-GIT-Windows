@@ -12,7 +12,7 @@ set "DOWNLOAD_TASK=DownloadTask_%RANDOM%"
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     echo This script requires administrator privileges.
-    echo Please right-click and select "Run as administrator"
+    echo Please right-click and select "Run as administrator".
     timeout /t 5 /nobreak
     exit /b 4
 )
