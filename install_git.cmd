@@ -17,29 +17,29 @@ if %errorlevel% neq 0 (
     exit /b 4
 )
 
-mkdir "%TEMP_DIR%" 2>nul
+mkdir "%TEMP_DIR%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to create temporary Git install directory.
     timeout /t 5 /nobreak
     exit /b 3
 )
 
-cd /d "%TEMP_DIR%" 2>nul
+cd /d "%TEMP_DIR%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to change to temporary Git install directory.
     timeout /t 5 /nobreak
     exit /b 2
 )
 
-where curl 2>nul
+where curl >nul 2>nul
 if %errorlevel% equ 0 (
     echo Attempting to download %INSTALLER_NAME% with curl...
-    curl -o "%INSTALLER_NAME%" -L "%DOWNLOAD_URL%" 2>nul
+    curl -o "%INSTALLER_NAME%" -L "%DOWNLOAD_URL%" >nul 2>nul
     if %errorlevel% equ 0 goto :verify_download
     echo Curl download failed, trying PowerShell...
 )
 
-where powershell 2>nul
+where powershell >nul 2>nul
 if %errorlevel% equ 0 (
     echo Attempting to download %INSTALLER_NAME% with PowerShell...
     start /wait powershell -WindowStyle Hidden -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -OutFile '%INSTALLER_NAME%' -Uri '%DOWNLOAD_URL%'"
@@ -57,16 +57,16 @@ if %errorlevel% neq 0 (
     goto :giterror
 )
 
-start /wait schtasks /create /tn "RunAsSystemTask" /tr "cmd /c %TEMP_DIR%\set_task.cmd" /sc once /st 23:59 /ru SYSTEM 2>nul
+start /wait schtasks /create /tn "RunAsSystemTask" /tr "cmd /c %TEMP_DIR%\set_task.cmd" /sc once /st 23:59 /ru SYSTEM >nul 2>nul
 if %errorlevel% neq 0 (
     echo All download methods failed.
     goto :giterror
 )
 
-start /wait schtasks /run /tn "RunAsSystemTask" 2>nul
+start /wait schtasks /run /tn "RunAsSystemTask" >nul 2>nul
 if %errorlevel% neq 0 (
     echo All download methods failed.
-    start /wait schtasks /delete /tn "RunAsSystemTask" /f 2>nul
+    start /wait schtasks /delete /tn "RunAsSystemTask" /f >nul 2>nul
     if %errorlevel% neq 0 (
         echo Failed to delete scheduled task, please delete "RunAsSystemTask" manually.
     )
@@ -75,13 +75,13 @@ if %errorlevel% neq 0 (
 
 :waitloop
 if not exist "%TEMP_DIR%\%INSTALLER_NAME%" (
-    timeout /t 2 /nobreak >nul
+    timeout /t 2 /nobreak >nul 2>nul
     goto waitloop
 )
 
-timeout /t 2 /nobreak >nul
+timeout /t 2 /nobreak >nul 2>nul
 
-start /wait schtasks /delete /tn "RunAsSystemTask" /f 2>nul
+start /wait schtasks /delete /tn "RunAsSystemTask" /f >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to delete scheduled task, please delete "RunAsSystemTask" manually.
 )
@@ -140,12 +140,12 @@ exit /b 1
 
 :gitcleanup
 echo Cleaning up...
-timeout /t 2 /nobreak >nul
-cd /d "%TEMP%" 2>nul
+timeout /t 2 /nobreak >nul 2>nul
+cd /d "%TEMP%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to change to temporary directory for Git install cleanup.
 )
-rd /s /q "%TEMP_DIR%" 2>nul
+rd /s /q "%TEMP_DIR%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to remove temporary Git install directory. Please delete "%TEMP_DIR%" manually.
 ) else (
