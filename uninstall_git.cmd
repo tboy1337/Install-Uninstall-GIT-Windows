@@ -43,11 +43,11 @@ for /L %%i in (0,1,4) do (
         echo Found Git installation in !locations[%%i]!
         echo With uninstaller !found_uninstaller!
         echo Terminating running Git processes...
-        taskkill /F /IM "bash.exe" 2>nul
-        taskkill /F /IM "putty.exe" 2>nul
-        taskkill /F /IM "puttytel.exe" 2>nul
-        taskkill /F /IM "puttygen.exe" 2>nul
-        taskkill /F /IM "pageant.exe" 2>nul
+        taskkill /F /IM "bash.exe" >nul 2>nul
+        taskkill /F /IM "putty.exe" >nul 2>nul
+        taskkill /F /IM "puttytel.exe" >nul 2>nul
+        taskkill /F /IM "puttygen.exe" >nul 2>nul
+        taskkill /F /IM "pageant.exe" >nul 2>nul
         
         echo Uninstalling Git from !locations[%%i]!...
         start /wait "Uninstalling Git" "!found_uninstaller!" /SP- /VERYSILENT /SUPPRESSMSGBOXES /FORCECLOSEAPPLICATIONS
@@ -59,9 +59,9 @@ for /L %%i in (0,1,4) do (
             echo Successfully uninstalled Git from !locations[%%i]!
             
             echo Cleaning up remaining files in !locations[%%i]!...
-            timeout /t 2 /nobreak >nul
+            timeout /t 2 >nul 2>nul
             
-            rd /s /q "!locations[%%i]!" 2>nul
+            rd /s /q "!locations[%%i]!" >nul 2>nul
             if !errorlevel! neq 0 (
                 echo Warning: Could not remove remaining files in !locations[%%i]!
                 set "cleanup_error=1"
