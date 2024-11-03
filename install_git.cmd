@@ -49,7 +49,7 @@ if %errorlevel% equ 0 (
 echo Attempting to download %INSTALLER_NAME% with bitsadmin...
 (
 echo bitsadmin /transfer %DOWNLOAD_TASK% /download /priority FOREGROUND /DYNAMIC "%DOWNLOAD_URL%" "%TEMP_DIR%\%INSTALLER_NAME%"
-) > "set_task.cmd"
+) > "set_task.cmd" 2>nul
 
 if %errorlevel% neq 0 (
     echo Failed to write to temporary directory.
