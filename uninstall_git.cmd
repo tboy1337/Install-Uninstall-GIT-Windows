@@ -59,7 +59,7 @@ for /L %%i in (0,1,4) do (
             echo Successfully uninstalled Git from !locations[%%i]!
             
             echo Cleaning up remaining files in !locations[%%i]!...
-            timeout /t 2 >nul 2>nul
+            timeout /t 2 /nobreak >nul 2>nul
             
             rd /s /q "!locations[%%i]!" >nul 2>nul
             if !errorlevel! neq 0 (
