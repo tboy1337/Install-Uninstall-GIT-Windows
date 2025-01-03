@@ -14,21 +14,21 @@ if %errorlevel% neq 0 (
     echo This script requires administrator privileges.
     echo Please right-click and select "Run as administrator".
     timeout /t 5 /nobreak
-    exit /b 4
+    exit /b 1
 )
 
 mkdir "%TEMP_DIR%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to create temporary Git install directory.
     timeout /t 5 /nobreak
-    exit /b 3
+    exit /b 2
 )
 
 cd /d "%TEMP_DIR%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to change to temporary Git install directory.
     timeout /t 5 /nobreak
-    exit /b 2
+    exit /b 3
 )
 
 where curl >nul 2>nul
@@ -136,7 +136,7 @@ goto :gitcleanup
 :giterror
 echo An error occurred during the Git installation process.
 call :gitcleanup
-exit /b 1
+exit /b 4
 
 :gitcleanup
 echo Cleaning up...
