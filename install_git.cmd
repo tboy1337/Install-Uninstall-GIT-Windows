@@ -2,17 +2,16 @@
 setlocal enabledelayedexpansion
 
 :: Set variables for easy updating
-set "GIT_VERSION=2.49.0"
+set "GIT_VERSION=2.50.1"
 set "DOWNLOAD_URL=https://github.com/git-for-windows/git/releases/download/v%GIT_VERSION%.windows.1/Git-%GIT_VERSION%-64-bit.exe"
 set "INSTALLER_NAME=Git-%GIT_VERSION%-64-bit.exe"
 
 set "TEMP_DIR=%TEMP%\GitInstall_%RANDOM%"
 set "DOWNLOAD_TASK=DownloadTask_%RANDOM%"
 
-net session >nul 2>&1
-if %errorlevel% neq 0 (
-    echo This script requires administrator privileges.
-    echo Please right-click and select "Run as administrator".
+net session >nul 2>nul
+if %errorlevel% equ 0 (
+    echo This script is intended for per-user installation. Please run without administrator privileges.
     timeout /t 5 /nobreak
     exit /b 1
 )
@@ -96,7 +95,7 @@ echo Creating temporary git_options.ini file...
 (
 echo [Setup]
 echo Lang=default
-echo Dir=%ProgramFiles%\Git
+echo Dir=%LOCALAPPDATA%\Programs\Git
 echo Group=Git
 echo NoIcons=0
 echo SetupType=default
