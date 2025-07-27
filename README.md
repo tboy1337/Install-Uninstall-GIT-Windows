@@ -70,7 +70,6 @@ Git-2.47.0-64-bit.exe /SAVEINF=git_options.ini
 ## Troubleshooting
 
 ### Installation Issues
-- Ensure you have administrative privileges
 - Check your internet connection
 - Verify that the temporary directory is accessible
 - Make sure no antivirus is blocking the download
