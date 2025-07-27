@@ -24,8 +24,7 @@
 
 ### Installing Git
 
-1. Right-click on `install_git.cmd`
-2. Select "Run as administrator"
+1. Double-click on `install_git.cmd`
 3. Wait for the installation to complete
 
 The script will:
