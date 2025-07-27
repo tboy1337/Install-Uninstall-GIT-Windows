@@ -59,12 +59,12 @@ The installation script configures Git with the following default settings:
 - Disabled symlinks
 - Disabled filesystem monitor
 
-You can manually download `Git-2.47.0-64-bit.exe` and record the parameters to a file using `/SAVEINF="filename"` if you want to change the default options set in the installer but are unsure of the parameters you want.
+You can manually download `Git-X.XX.X-64-bit.exe` and record the parameters to a file using `/SAVEINF="filename"` if you want to change the default options set in the installer but are unsure of the parameters you want.
 
 Example for saving selected options to a file during an interactive run started from the command-line:
 
 ```
-Git-2.47.0-64-bit.exe /SAVEINF=git_options.ini
+Git-X.XX.X-64-bit.exe /SAVEINF=git_options.ini
 ```
 
 ## Troubleshooting
