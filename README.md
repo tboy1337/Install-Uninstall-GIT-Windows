@@ -17,7 +17,7 @@
 ## Requirements
 
 - 64-bit Windows operating system (64-bit for installation only)
-- Administrative privileges
+- Administrative privileges (for uninstallation only)
 - Internet connection (for installation only)
 
 ## Usage
