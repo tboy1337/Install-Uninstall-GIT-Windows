@@ -9,7 +9,7 @@ set "INSTALLER_NAME=Git-%GIT_VERSION%-64-bit.exe"
 set "TEMP_DIR=%TEMP%\GitInstall_%RANDOM%"
 set "DOWNLOAD_TASK=DownloadTask_%RANDOM%"
 
-net session >nul 2>nul
+net session >nul 2>&1
 if %errorlevel% equ 0 (
     echo This script is intended for per-user installation. Please run without administrator privileges.
     timeout /t 5 /nobreak
