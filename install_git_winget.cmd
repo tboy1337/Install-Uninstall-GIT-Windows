@@ -15,12 +15,19 @@ if %errorlevel% neq 0 (
     exit /b 2
 )
 
+where git >nul 2>&1
+if %errorlevel% equ 0 (
+    echo Git is already installed and in PATH.
+    timeout /t 5 /nobreak
+    exit /b 3
+)
+
 echo Installing Git using winget...
 winget install --id Git.Git --source winget --scope user --silent --accept-package-agreements --accept-source-agreements
 if %errorlevel% neq 0 (
     echo Failed to install Git via winget.
     timeout /t 5 /nobreak
-    exit /b 3
+    exit /b 4
 )
 
 echo Git installation completed. Configuring Git settings...
@@ -32,7 +39,7 @@ if %errorlevel% neq 0 (
     echo Git was installed but is not yet available in PATH. You may need to restart your command prompt.
     echo Manual configuration will be required.
     timeout /t 5 /nobreak
-    exit /b 4
+    exit /b 5
 )
 
 echo Configuring Git settings...
