@@ -66,8 +66,7 @@ The script will:
 
 ### Updating Git
 
-1. Right-click on `update_git.cmd`
-2. Select "Run as administrator"
+1. Double-click on `update_git.cmd`
 3. Wait for the update to complete
 
 The script will:
