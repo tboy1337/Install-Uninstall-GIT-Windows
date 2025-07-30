@@ -2,9 +2,8 @@
 setlocal enabledelayedexpansion
 
 net session >nul 2>&1
-if %errorlevel% neq 0 (
-    echo This script requires administrator privileges.
-    echo Please right-click and select "Run as administrator".
+if %errorlevel% equ 0 (
+    echo This script is intended for per-user installation. Please run without administrator privileges.
     timeout /t 5 /nobreak
     exit /b 1
 )
