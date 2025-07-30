@@ -16,13 +16,6 @@ if %errorlevel% equ 0 (
     exit /b 1
 )
 
-where git >nul 2>&1
-if %errorlevel% equ 0 (
-    echo Git is already installed and in PATH.
-    timeout /t 5 /nobreak
-    exit /b 2
-)
-
 mkdir "%TEMP_DIR%" >nul 2>nul
 if %errorlevel% neq 0 (
     echo Failed to create temporary Git install directory.
