@@ -46,6 +46,7 @@ echo Configuring Git settings...
 
 :: Core settings
 git config --global init.defaultBranch main
+git config --global core.eol crlf
 git config --global core.autocrlf true
 git config --global core.editor "vim"
 
