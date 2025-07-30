@@ -14,6 +14,12 @@
   - Performs complete cleanup of remaining files
   - Handles multiple Git installations
 
+- **Automated Git Updating**
+  - Uses Git's built-in updater
+  - Requires administrator privileges
+  - Verifies Git installation
+  - Reports update status
+
 ## Requirements
 
 - 64-bit Windows operating system (64-bit for installation only)
@@ -57,6 +63,18 @@ The script will:
 - Close any running Git processes
 - Uninstall Git from all found locations
 - Remove remaining files and directories
+
+### Updating Git
+
+1. Right-click on `update_git.cmd`
+2. Select "Run as administrator"
+3. Wait for the update to complete
+
+The script will:
+- Verify administrator privileges
+- Check if Git is installed
+- Run the built-in Git updater
+- Report success or failure
 
 ## Default Installation Settings
 
