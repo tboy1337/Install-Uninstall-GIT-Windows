@@ -6,8 +6,8 @@ set "GIT_VERSION=2.50.1"
 set "DOWNLOAD_URL=https://github.com/git-for-windows/git/releases/download/v%GIT_VERSION%.windows.1/Git-%GIT_VERSION%-64-bit.exe"
 set "INSTALLER_NAME=Git-%GIT_VERSION%-64-bit.exe"
 
-set "TEMP_DIR=%TEMP%\GitInstall_%RANDOM%"
-set "DOWNLOAD_TASK=DownloadTask_%RANDOM%"
+set "TEMP_DIR=%TEMP%\GitInstall_%RANDOM%_%RANDOM%"
+set "DOWNLOAD_TASK=DownloadTask_%RANDOM%_%RANDOM%"
 
 net session >nul 2>&1
 if %errorlevel% equ 0 (
