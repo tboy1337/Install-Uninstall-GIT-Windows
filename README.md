@@ -25,7 +25,7 @@
 ### Installing Git
 
 1. Double-click on `install_git.cmd`
-3. Wait for the installation to complete
+2. Wait for the installation to complete
 
 The script will:
 - Create a temporary directory
@@ -33,6 +33,18 @@ The script will:
 - Create a configuration file
 - Install Git silently
 - Clean up temporary files
+
+### Alternative: Installing Git using Winget
+
+1. Double-click on `install_git_winget.cmd`
+2. Wait for the installation to complete
+
+The script will:
+- Check if winget is available and install Git per-user silently
+- Configure Git with default settings (main branch, autocrlf true, vim editor, credential manager, etc.)
+- Refresh the PATH to make Git available immediately
+
+This method requires winget (App Installer) and is suitable for per-user installation without admin rights.
 
 ### Uninstalling Git
 
