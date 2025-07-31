@@ -46,22 +46,53 @@ echo Configuring Git settings...
 
 :: Core settings
 git config --global init.defaultBranch main
+if %errorlevel% neq 0 (
+    echo Failed to set init.defaultBranch.  Error code: %errorlevel%
+)
+
 git config --global core.eol crlf
+if %errorlevel% neq 0 (
+    echo Failed to set core.eol.  Error code: %errorlevel%
+)
+
 git config --global core.autocrlf true
+if %errorlevel% neq 0 (
+    echo Failed to set core.autocrlf.  Error code: %errorlevel%
+)
+
 git config --global core.editor "vim"
+if %errorlevel% neq 0 (
+    echo Failed to set core.editor.  Error code: %errorlevel%
+)
 
 :: Credential manager
 git config --global credential.helper manager
+if %errorlevel% neq 0 (
+    echo Failed to set credential.helper.  Error code: %errorlevel%
+)
 
 :: Performance tweaks
 git config --global core.preloadindex true
+if %errorlevel% neq 0 (
+    echo Failed to set core.preloadindex.  Error code: %errorlevel%
+)
+
 git config --global core.fscache true
+if %errorlevel% neq 0 (
+    echo Failed to set core.fscache.  Error code: %errorlevel%
+)
 
 :: Push behavior
 git config --global pull.rebase false
+if %errorlevel% neq 0 (
+    echo Failed to set pull.rebase.  Error code: %errorlevel%
+)
 
 :: Enable long paths on Windows
 git config --global core.longpaths true
+if %errorlevel% neq 0 (
+    echo Failed to set core.longpaths.  Error code: %errorlevel%
+)
 
 echo Git installation and configuration completed successfully.
 
