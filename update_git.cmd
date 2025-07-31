@@ -17,9 +17,7 @@ if %errorlevel% neq 0 (
 
 echo Updating Git using built-in updater...
 git update-git-for-windows
-if %errorlevel% equ 0 (
-    echo Git update completed successfully!
-) else (
+if %errorlevel% neq 0 (
     echo Git update failed.  Error code: %errorlevel%
     timeout /t 5 /nobreak
     exit /b 3
