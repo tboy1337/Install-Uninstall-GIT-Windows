@@ -23,7 +23,7 @@ if %errorlevel% equ 0 (
 )
 
 echo Installing Git using winget...
-winget install --id Git.Git --source winget --silent --accept-package-agreements --accept-source-agreements
+winget install --id Git.Git --silent --accept-package-agreements --accept-source-agreements
 if %errorlevel% neq 0 (
     echo Failed to install Git via winget.
     timeout /t 5 /nobreak
