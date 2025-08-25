@@ -101,14 +101,26 @@ exit /b 0
 
 :refresh_env
 :: Refresh environment variables without requiring a restart
+:: Instead of completely replacing PATH, ensure critical directories are present
+if not defined PATH set "PATH="
+
+:: Ensure system32 is in PATH (needed for timeout and other system commands)
+echo !PATH! | findstr /i "system32" >nul
+if %errorlevel% neq 0 (
+    set "PATH=!PATH!;%SystemRoot%\system32"
+)
+
+:: Ensure basic Windows directories are in PATH
+echo !PATH! | findstr /i "%SystemRoot%" >nul
+if %errorlevel% neq 0 (
+    set "PATH=!PATH!;%SystemRoot%;%SystemRoot%\System32\Wbem"
+)
+
+:: Read user PATH from registry and append if not already present
 set "UserPath="
 for /f "tokens=2,*" %%A in ('reg query HKCU\Environment /v PATH 2^>nul') do set "UserPath=%%B"
-set "SystemPath="
-for /f "tokens=2,*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH 2^>nul') do set "SystemPath=%%B"
-if not defined SystemPath (
-    echo Error: Could not read system PATH.
-    exit /b 6
+if defined UserPath (
+    echo !PATH! | findstr /i "!UserPath!" >nul
+    if !errorlevel! neq 0 set "PATH=!PATH!;!UserPath!"
 )
-set "PATH=%SystemPath%"
-if defined UserPath set "PATH=%SystemPath%;%UserPath%"
 exit /b
