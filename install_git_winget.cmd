@@ -102,14 +102,13 @@ exit /b 0
 :refresh_env
 :: Refresh environment variables without requiring a restart
 set "UserPath="
-for /f "tokens=2,*" %%A in ('reg query HKCU\Environment /v PATH 2^^^>nul') do set "UserPath=%%B"
-set "syskey=HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+for /f "tokens=2,*" %%A in ('reg query HKCU\Environment /v PATH 2^>nul') do set "UserPath=%%B"
 set "SystemPath="
-for /f "tokens=2,*" %%A in ('reg query "%%syskey%%" /v PATH 2^^^>nul') do set "SystemPath=%%B"
+for /f "tokens=2,*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH 2^>nul') do set "SystemPath=%%B"
 if not defined SystemPath (
     echo Error: Could not read system PATH.
     exit /b 6
 )
-set "PATH=%%SystemPath%%"
-if defined UserPath set "PATH=%%SystemPath%%;%%UserPath%%"
+set "PATH=%SystemPath%"
+if defined UserPath set "PATH=%SystemPath%;%UserPath%"
 exit /b
